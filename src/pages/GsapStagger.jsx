@@ -1,6 +1,36 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 const GsapStagger = () => {
   // TODO: Implement the gsap.stagger() method
-
+  const timeline = gsap.timeline();
+  useGSAP(() => {
+    timeline.to(".stagger-box", {
+      x: 250,
+      y: 250,
+      borderRadius: "100%",
+      stagger: {
+        amount: 0.2, //quanto maior o número, maior o delay
+        from: "center", // diz qual parte do grupo vai puxar as animações
+      },
+    });
+    timeline.to(".stagger-box", {
+      x: 0,
+      y: 500,
+      borderRadius: "0%",
+      stagger: {
+        amount: 0.2, //quanto maior o número, maior o delay
+      },
+    });
+    timeline.to(".stagger-box", {
+      x: 250,
+      y: 750,
+      borderRadius: "8%",
+      stagger: {
+        amount: 0.2, //quanto maior o número, maior o delay
+      },
+    });
+  }, []);
   return (
     <main>
       <h1>GsapStagger</h1>
